@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+<title id="title">Sơ đồ khái niệm về giới tuyến quân sự tạm thời theo Hiệp định Genève 1954</title>
+<desc id="desc">Sơ đồ không theo tỷ lệ thể hiện vùng tập kết quân sự phía bắc và phía nam, vùng đệm tối đa năm kilômét mỗi bên, giới tuyến quân sự tạm thời tại khu vực Bến Hải và Cửa Tùng gần vĩ tuyến 17; đây không phải biên giới quốc tế.</desc>
+<rect width="900" height="600" rx="28" fill="#f7f0e3"/>
+<text x="450" y="45" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#292722">Sơ đồ minh họa, không theo tỷ lệ</text>
+<rect x="80" y="85" width="740" height="180" rx="22" fill="#dce7df"/>
+<rect x="80" y="335" width="740" height="180" rx="22" fill="#eadfce"/>
+<text x="450" y="145" text-anchor="middle" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#354b3c">Vùng tập kết quân sự phía Bắc</text>
+<text x="450" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#354b3c">Quân đội Nhân dân Việt Nam tập kết ở phía bắc</text>
+<text x="450" y="430" text-anchor="middle" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#70403a">Vùng tập kết quân sự phía Nam</text>
+<text x="450" y="470" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#70403a">Lực lượng Liên hiệp Pháp tập kết ở phía nam</text>
+<rect x="80" y="265" width="740" height="70" fill="#d6c39b" opacity=".65"/>
+<path d="M105 300 C220 277 310 323 420 299 S635 280 795 300" fill="none" stroke="#43788a" stroke-width="12" stroke-linecap="round"/>
+<path d="M80 300H820" stroke="#8b332e" stroke-width="4" stroke-dasharray="14 10"/>
+<text x="450" y="292" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#292722">Bến Hải / Cửa Tùng</text>
+<text x="450" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#292722">Giới tuyến quân sự tạm thời · gần vĩ tuyến 17</text>
+<text x="105" y="288" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#5c4b36">Vùng đệm: tối đa 5 km mỗi bên</text>
+<rect x="195" y="535" width="510" height="42" rx="21" fill="#8b332e"/>
+<text x="450" y="563" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fffaf0">KHÔNG PHẢI BIÊN GIỚI QUỐC TẾ</text>
+</svg>

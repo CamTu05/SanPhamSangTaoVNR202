@@ -1,0 +1,15 @@
+export type HistoricalSource = { id?: string; title: string; creator?: string; publisher?: string; date?: string; url?: string; note?: string }
+export type MediaAsset = { id: string; pageIds: string[]; legacyPageIds?: string[]; displayPageId?: string; kind: 'image' | 'map' | 'illustration' | 'video'; description: string; caption?: string; source: string; sourceUrl?: string; attribution: string; license: string; permissionStatus: 'pending' | 'reusable'; verificationStatus: 'pending' | 'source-verified' | 'verified'; lifecycleStatus?: 'active' | 'legacy'; recordType?: 'asset' | 'requirement'; rightsBasis?: string; contentWarnings?: string[]; localPath: string | null }
+export type MediaTrack = { src: string; kind: 'subtitles' | 'captions' | 'descriptions'; srcLang: string; label: string; default?: boolean }
+export type ImageAsset = { id: string; kind: 'image'; src?: string; alt: string; caption: string; source?: HistoricalSource; status?: 'available' | 'pending-review'; requirements?: string }
+export type VideoAsset = { id: string; kind: 'video'; src?: string; poster?: string; caption: string; source?: HistoricalSource; status?: 'available' | 'pending-review'; requirements?: string; transcript?: string; tracks?: MediaTrack[] }
+export type HistoricalEvent = { id: string; date: string; dateTime?: string; title: string; description: string }
+export type CampaignPhase = HistoricalEvent
+export type InteractiveHotspot = { id: string; x: number; y: number; label: string; title: string; description: string; source?: HistoricalSource }
+export type InfoCard = { id: string; title: string; description: string }
+export type Action = { label: string; pageId?: string; url?: string }
+export type PageInteraction = { kind: 'timeline-map-sync'; title: string; description: string; label: string }
+export type BookPageDefinition = { id: string; spreadId?: string; side?: 'L' | 'R'; partId?: string; chapterId?: string; layout: 'cover' | 'back-cover' | 'reading-instructions' | 'toc' | 'story' | 'cards' | 'timeline' | 'schematic' | 'comparison' | 'strategy-tabs' | 'reference'; eyebrow?: string; title: string; subtitle?: string; body?: string; tagline?: string; caption?: string; highlight?: string; microcopy?: string; cards?: InfoCard[]; events?: HistoricalEvent[]; mediaIds?: string[]; actions?: Action[]; sources?: HistoricalSource[]; interaction?: PageInteraction }
+export type ChapterDefinition = { id: string; partId: string; title: string; period: string; pageIds: string[] }
+export type PartDefinition = { id: string; title: string; period: string; pageIds: string[] }
+export type BookDefinition = { id: string; title: string; eyebrow: string; period: string; pages: BookPageDefinition[]; parts: PartDefinition[]; chapters: ChapterDefinition[] }

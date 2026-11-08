@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+<title id="title">Sơ đồ giáo dục về vai trò của Việt Bắc</title>
+<desc id="desc">Minh họa khái niệm không theo tỷ lệ gồm ba nút Căn cứ, Địa hình và Ý nghĩa liên kết quanh một tâm điểm Việt Bắc, không thể hiện địa lý, tuyến tiến công hay ranh giới.</desc>
+<rect width="900" height="600" rx="28" fill="#f7f0e3"/>
+<text x="450" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#292722">Sơ đồ giáo dục, không theo tỷ lệ</text>
+<circle cx="450" cy="300" r="92" fill="#8b332e"/>
+<text x="450" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-size="31" font-weight="700" fill="#fffaf0">VIỆT BẮC</text>
+<g fill="none" stroke="#bd985d" stroke-width="7"><path d="M375 245L275 180"/><path d="M525 245L625 180"/><path d="M450 392V450"/></g>
+<g font-family="Arial,sans-serif">
+<rect x="70" y="105" width="270" height="145" rx="24" fill="#dce7df" stroke="#526354" stroke-width="3"/>
+<text x="205" y="155" text-anchor="middle" font-size="25" font-weight="700" fill="#354b3c">Căn cứ</text>
+<text x="205" y="190" text-anchor="middle" font-size="17" fill="#354b3c"><tspan x="205">Nơi đặt nhiều cơ quan</tspan><tspan x="205" dy="25">lãnh đạo kháng chiến</tspan></text>
+<rect x="560" y="105" width="270" height="145" rx="24" fill="#e4dfc5" stroke="#756b3e" stroke-width="3"/>
+<text x="695" y="155" text-anchor="middle" font-size="25" font-weight="700" fill="#514b2d">Địa hình</text>
+<text x="695" y="190" text-anchor="middle" font-size="17" fill="#514b2d"><tspan x="695">Rừng núi thuận lợi cho cơ động</tspan><tspan x="695" dy="25">và phân tán lực lượng</tspan></text>
+<rect x="285" y="450" width="330" height="120" rx="24" fill="#eadfce" stroke="#8b5c4e" stroke-width="3"/>
+<text x="450" y="495" text-anchor="middle" font-size="25" font-weight="700" fill="#70403a">Ý nghĩa</text>
+<text x="450" y="530" text-anchor="middle" font-size="17" fill="#70403a"><tspan x="450">Bảo toàn lực lượng và củng cố niềm tin</tspan><tspan x="450" dy="24">vào kháng chiến lâu dài</tspan></text>
+</g>
+</svg>

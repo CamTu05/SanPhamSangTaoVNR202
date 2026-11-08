@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+<title id="title">Ký ức chiến tranh – Giá trị của hòa bình</title>
+<desc id="desc">Minh họa biên tập với trục thời gian 1945 đến 1975, các mảng giấy hình học trừu tượng, bóng dáng người dân bình thường và đường chân trời rộng mở tượng trưng cho hòa bình.</desc>
+<rect width="900" height="600" rx="28" fill="#f5eddf"/>
+<g opacity=".65"><path d="M55 85h250v170H55z" fill="#ddcfb8" transform="rotate(-5 180 170)"/><path d="M595 70h245v190H595z" fill="#d7dfd5" transform="rotate(4 717 165)"/><path d="M295 105h310v175H295z" fill="#eadfce"/><g stroke="#b7a98f" stroke-width="3"><path d="M90 125h175M80 160h145M645 120h150M650 155h115M345 150h210M345 190h165"/></g></g>
+<path d="M0 405 Q180 350 360 400 T720 385 T900 400V600H0Z" fill="#dbe5db"/>
+<path d="M0 430 Q210 385 430 425 T900 410" fill="none" stroke="#bd985d" stroke-width="7"/>
+<g fill="#4b4943"><circle cx="280" cy="335" r="24"/><path d="M245 420l12-65q23-20 46 0l13 65z"/><circle cx="380" cy="325" r="27"/><path d="M338 420l15-72q27-24 54 0l15 72z"/><circle cx="480" cy="340" r="22"/><path d="M447 420l12-60q21-18 42 0l12 60z"/><circle cx="570" cy="330" r="25"/><path d="M533 420l13-68q24-21 48 0l13 68z"/></g>
+<g stroke="#8b332e" stroke-width="5" fill="#f5eddf"><path d="M130 475H770"/><circle cx="150" cy="475" r="10"/><circle cx="750" cy="475" r="10"/></g>
+<text x="150" y="515" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#8b332e">1945</text>
+<text x="750" y="515" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#8b332e">1975</text>
+<g transform="translate(450 315)" stroke="#526354" stroke-width="8" fill="none" stroke-linecap="round"><circle r="38"/><path d="M0 38v-54M0 5l-28 22M0 5l28 22"/></g>
+<text x="450" y="558" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#292722">Minh họa biên tập về ký ức chiến tranh và giá trị hòa bình.</text>
+</svg>

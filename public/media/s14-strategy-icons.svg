@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 390" role="img" aria-labelledby="title desc">
+  <title id="title">Ba giai đoạn thay đổi chiến lược của Hoa Kỳ tại Việt Nam</title>
+  <desc id="desc">Minh họa giáo dục nội bộ gồm ba phần: Chiến tranh đặc biệt, Chiến tranh cục bộ và Việt Nam hóa chiến tranh.</desc>
+  <style>
+    .frame{fill:#fff9ed;stroke:#bd985d;stroke-width:3}.line{stroke:#bd985d;stroke-width:4}.circle{fill:#526354}.cap{fill:#7c302b;font:700 22px Georgia,serif}.label{fill:#292722;font:600 17px Georgia,serif}.small{fill:#5d5448;font:15px Georgia,serif}
+  </style>
+  <rect x="12" y="12" width="876" height="366" rx="12" class="frame"/>
+  <line x1="166" y1="204" x2="734" y2="204" class="line"/>
+  <circle cx="166" cy="204" r="38" class="circle"/>
+  <circle cx="450" cy="204" r="38" class="circle"/>
+  <circle cx="734" cy="204" r="38" class="circle"/>
+  <path d="M154 204h24M166 192v24" stroke="#fffaf0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M438 204h24M450 192v24" stroke="#fffaf0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M722 204h24M734 192v24" stroke="#fffaf0" stroke-width="5" stroke-linecap="round"/>
+  <text x="166" y="70" text-anchor="middle" class="cap">Chiến tranh đặc biệt</text>
+  <text x="166" y="98" text-anchor="middle" class="small">1961–1965</text>
+  <text x="166" y="286" text-anchor="middle" class="label">Vai trò chủ yếu của</text>
+  <text x="166" y="310" text-anchor="middle" class="label">quân đội Việt Nam Cộng hòa</text>
+  <text x="450" y="70" text-anchor="middle" class="cap">Chiến tranh cục bộ</text>
+  <text x="450" y="98" text-anchor="middle" class="small">1965–1968</text>
+  <text x="450" y="286" text-anchor="middle" class="label">Lực lượng chiến đấu Mỹ</text>
+  <text x="450" y="310" text-anchor="middle" class="label">trực tiếp tham gia</text>
+  <text x="734" y="70" text-anchor="middle" class="cap">Việt Nam hóa chiến tranh</text>
+  <text x="734" y="98" text-anchor="middle" class="small">từ 1969</text>
+  <text x="734" y="274" text-anchor="middle" class="label">Mỹ từng bước rút quân,</text>
+  <text x="734" y="298" text-anchor="middle" class="label">tăng vai trò quân đội</text>
+  <text x="734" y="322" text-anchor="middle" class="label">Việt Nam Cộng hòa</text>
+</svg>
