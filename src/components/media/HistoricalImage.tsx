@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ImageAsset } from '../../types/book'
-import { SourceCitation } from './SourceCitation'
 
 export type HistoricalImageProps = { asset: ImageAsset; className?: string }
 
 const MAX_RETRIES = 2
+const yearFrom = (asset: ImageAsset) => asset.caption.match(/\b(?:18|19|20)\d{2}\b/)?.[0] ?? asset.source?.date ?? 'không rõ năm'
 
 export function HistoricalImage({ asset, className }: HistoricalImageProps) {
   const pending = asset.status === 'pending-review' || !asset.src
@@ -52,7 +52,7 @@ export function HistoricalImage({ asset, className }: HistoricalImageProps) {
               className={status === 'loaded' ? 'is-loaded' : undefined}
               onLoad={() => setStatus('loaded')} onError={handleError} />}
       </>}
-      <figcaption>{asset.caption}{asset.source && <SourceCitation source={asset.source} />}</figcaption>
+      <figcaption><span className="figure-label">Hình {asset.figureNumber ?? '—'}.</span> {asset.caption} {asset.source && <small className="figure-source">Nguồn: {asset.source.url ? <a href={asset.source.url} target="_blank" rel="noreferrer">{asset.source.creator ?? asset.source.title}<span className="visually-hidden"> (mở trong thẻ mới)</span></a> : asset.source.creator ?? asset.source.title} ({yearFrom(asset)}).</small>}</figcaption>
     </figure>
   )
 }

@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import HTMLFlipBook, { type FlipEvent, type HTMLFlipBookRef, type OrientationEvent, type PageOrientation } from 'react-pageflip'
 import { bookDefinition } from '../data/bookPages'
+import { approvedSources } from '../data/mediaManifest'
 import { BookPage } from './BookPage'
+import { SourcesDialog } from './SourcesDialog'
 import { getPhysicalSpread } from './readerParity'
 
 /** Chỉ bỏ qua phím lật trang khi focus đang nằm trong widget tự xử lý phím mũi tên. */
@@ -14,6 +16,8 @@ export function HistoryBook() {
   const [currentPage, setCurrentPage] = useState(0)
   const [orientation, setOrientation] = useState<PageOrientation>('landscape')
   const [tocOpen, setTocOpen] = useState(false)
+  const [sourcesOpen, setSourcesOpen] = useState(false)
+  const sourcesTriggerRef = useRef<HTMLButtonElement>(null)
   const pages = bookDefinition.pages
   const lastIndex = pages.length - 1
   const normalizedPage = Math.max(0, Math.min(currentPage, lastIndex))
@@ -62,6 +66,7 @@ export function HistoryBook() {
 
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
+      if (sourcesOpen) return
       if (event.key === 'Escape' && tocOpen) { event.preventDefault(); setTocOpen(false); return }
       if (consumesArrows(event.target)) return
       if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); goPrevious() }
@@ -71,7 +76,7 @@ export function HistoryBook() {
     }
     window.addEventListener('keydown', keydown)
     return () => window.removeEventListener('keydown', keydown)
-  }, [goNext, goPrevious, goToIndex, lastIndex, tocOpen])
+  }, [goNext, goPrevious, goToIndex, lastIndex, sourcesOpen, tocOpen])
 
   const physicalLabel = spreadLabel(spreadLead)
   const counter = physicalSpread.length === 2
@@ -79,16 +84,17 @@ export function HistoryBook() {
     : `${normalizedPage + 1}/${pages.length}`
 
   return <main className="reader-shell">
-    <header className="reader-header"><div><p className="eyebrow">{bookDefinition.eyebrow}</p><h1>{bookDefinition.title}</h1></div><p className="reader-period">{bookDefinition.period}</p><button className="toc-toggle" type="button" aria-expanded={tocOpen} aria-controls="book-toc" onClick={() => setTocOpen((open) => !open)}>Mục lục</button></header>
+    <header className="reader-header"><div><p className="eyebrow">{bookDefinition.eyebrow}</p><h1>{bookDefinition.title}</h1></div><p className="reader-period">{bookDefinition.period}</p><div className="reader-header__actions"><button ref={sourcesTriggerRef} className="sources-toggle" type="button" aria-haspopup="dialog" aria-expanded={sourcesOpen} onClick={() => setSourcesOpen(true)}>Nguồn tư liệu</button><button className="toc-toggle" type="button" aria-expanded={tocOpen} aria-controls="book-toc" onClick={() => setTocOpen((open) => !open)}>Mục lục</button></div></header>
     <nav id="book-toc" className={`book-toc${tocOpen ? ' is-open' : ''}`} aria-label="Mục lục chương" aria-hidden={!tocOpen} inert={!tocOpen}>
       {bookDefinition.parts.map((part) => <div className="toc-group" key={part.id}>
         <button className="toc-part" type="button" onClick={() => goToPage(part.pageIds[0])}><span>{part.title}</span><small>{part.period}</small></button>
-        {bookDefinition.chapters.filter((chapter) => chapter.partId === part.id).map((chapter) => <button className="toc-chapter" key={chapter.id} type="button" aria-current={currentChapter?.id === chapter.id ? 'page' : undefined} onClick={() => goToPage(chapter.pageIds[0])}><span>{chapter.title}</span><small>{chapter.period}</small></button>)}
+        {bookDefinition.chapters.filter((chapter) => chapter.partIds?.includes(part.id) ?? chapter.partId === part.id).map((chapter) => <button className="toc-chapter" key={chapter.id} type="button" aria-current={currentChapter?.id === chapter.id ? 'page' : undefined} onClick={() => goToPage(chapter.pageIds[0])}><span>{chapter.title}</span><small>{chapter.period}</small></button>)}
       </div>)}
     </nav>
     <section className="book-stage" aria-label="Sách lịch sử tương tác"><HTMLFlipBook ref={bookRef} className="history-book" style={{}} width={430} height={600} size="stretch" minWidth={300} maxWidth={430} minHeight={420} maxHeight={600} startPage={0} drawShadow flippingTime={650} usePortrait startZIndex={0} autoSize maxShadowOpacity={0.45} showCover mobileScrollSupport clickEventForward useMouseEvents swipeDistance={40} showPageCorners disableFlipByClick={false} onFlip={(event: FlipEvent<number>) => setCurrentPage(Math.max(0, Math.min(event.data, lastIndex)))} onChangeOrientation={(event: OrientationEvent) => setOrientation(event.data)}>{pages.map((page, index) => <BookPage key={page.id} page={page} pageNumber={index} lastIndex={lastIndex} isActive={visiblePages.includes(index)} onNavigatePage={goToPage} />)}</HTMLFlipBook></section>
     <nav className="reader-controls" aria-label="Điều hướng trang"><button type="button" onClick={goPrevious} disabled={normalizedPage === 0}>← Trang trước</button><label className="page-status"><span className="visually-hidden">Đi đến trang</span><select value={spreadLead} onChange={(event) => goToIndex(Number(event.target.value))}>{navigableIndexes.map((index) => <option key={index} value={index}>{spreadLabel(index)} — {pages[index].title}</option>)}</select></label><button type="button" onClick={goNext} disabled={normalizedPage === lastIndex}>Trang sau →</button></nav>
     <p className="reader-context" aria-live="polite">{currentDefinition.title} · {physicalLabel} · {counter}</p>
-    <p className="reader-hint">Kéo góc trang, dùng nút hoặc phím mũi tên, Page Up, Page Down, Home và End. Trang có nội dung dài có thể cuộn bên trong.</p>
+    <p className="reader-hint">Kéo góc trang, dùng nút hoặc phím mũi tên, Page Up, Page Down, Home và End.</p>
+    <SourcesDialog open={sourcesOpen} sources={approvedSources} onClose={() => setSourcesOpen(false)} triggerRef={sourcesTriggerRef} />
   </main>
 }
