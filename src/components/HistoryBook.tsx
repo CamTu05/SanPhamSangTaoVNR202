@@ -13,6 +13,7 @@ function consumesArrows(target: EventTarget | null) {
 
 export function HistoryBook() {
   const bookRef = useRef<HTMLFlipBookRef>(null)
+  const requestedPageRef = useRef<number | null>(null)
   const [currentPage, setCurrentPage] = useState(0)
   const [orientation, setOrientation] = useState<PageOrientation>('landscape')
   const [tocOpen, setTocOpen] = useState(false)
@@ -46,13 +47,19 @@ export function HistoryBook() {
   }
 
   const goToIndex = useCallback((index: number) => {
-    let safe = Math.max(0, Math.min(index, lastIndex))
-    if (isLandscape && safe > 0 && safe < lastIndex && safe % 2 === 0) safe -= 1
-    const controller = bookRef.current?.pageFlip()
-    if (controller) controller.turnToPage(safe)
-    else setCurrentPage(safe)
+    const requested = Math.max(0, Math.min(index, lastIndex))
+    let physical = requested
+    if (isLandscape && physical > 0 && physical < lastIndex && physical % 2 === 0) physical -= 1
+    requestedPageRef.current = requested
+    setCurrentPage(requested)
+    requestAnimationFrame(() => bookRef.current?.pageFlip()?.turnToPage(physical))
   }, [isLandscape, lastIndex])
-  const goToPage = useCallback((id: string) => { const index = pageIndexById.get(id); if (index !== undefined) { goToIndex(index); setTocOpen(false) } }, [goToIndex, pageIndexById])
+  const goToPage = useCallback((id: string) => {
+    const index = pageIndexById.get(id)
+    if (index === undefined) return
+    setTocOpen(false)
+    requestAnimationFrame(() => goToIndex(index))
+  }, [goToIndex, pageIndexById])
   const goPrevious = useCallback(() => {
     const controller = bookRef.current?.pageFlip()
     if (controller) controller.flipPrev()
@@ -91,7 +98,7 @@ export function HistoryBook() {
         {bookDefinition.chapters.filter((chapter) => chapter.partIds?.includes(part.id) ?? chapter.partId === part.id).map((chapter) => <button className="toc-chapter" key={chapter.id} type="button" aria-current={currentChapter?.id === chapter.id ? 'page' : undefined} onClick={() => goToPage(chapter.pageIds[0])}><span>{chapter.title}</span><small>{chapter.period}</small></button>)}
       </div>)}
     </nav>
-    <section className="book-stage" aria-label="Sách lịch sử tương tác"><HTMLFlipBook ref={bookRef} className="history-book" style={{}} width={430} height={600} size="stretch" minWidth={300} maxWidth={430} minHeight={420} maxHeight={600} startPage={0} drawShadow flippingTime={650} usePortrait startZIndex={0} autoSize maxShadowOpacity={0.45} showCover mobileScrollSupport clickEventForward useMouseEvents swipeDistance={40} showPageCorners disableFlipByClick={false} onFlip={(event: FlipEvent<number>) => setCurrentPage(Math.max(0, Math.min(event.data, lastIndex)))} onChangeOrientation={(event: OrientationEvent) => setOrientation(event.data)}>{pages.map((page, index) => <BookPage key={page.id} page={page} pageNumber={index} lastIndex={lastIndex} isActive={visiblePages.includes(index)} onNavigatePage={goToPage} />)}</HTMLFlipBook></section>
+    <section className="book-stage" aria-label="Sách lịch sử tương tác"><HTMLFlipBook ref={bookRef} className="history-book" style={{}} width={430} height={600} size="stretch" minWidth={300} maxWidth={430} minHeight={420} maxHeight={600} startPage={0} drawShadow flippingTime={650} usePortrait startZIndex={0} autoSize maxShadowOpacity={0.45} showCover mobileScrollSupport clickEventForward useMouseEvents swipeDistance={40} showPageCorners disableFlipByClick={false} onFlip={(event: FlipEvent<number>) => { const flipped = Math.max(0, Math.min(event.data, lastIndex)); const requested = requestedPageRef.current; if (requested !== null && getPhysicalSpread(requested, lastIndex).includes(flipped)) { setCurrentPage(requested); requestedPageRef.current = null } else { requestedPageRef.current = null; setCurrentPage(flipped) } }} onChangeOrientation={(event: OrientationEvent) => setOrientation(event.data)}>{pages.map((page, index) => <BookPage key={page.id} page={page} pageNumber={index} lastIndex={lastIndex} isActive={visiblePages.includes(index)} onNavigatePage={goToPage} />)}</HTMLFlipBook></section>
     <nav className="reader-controls" aria-label="Điều hướng trang"><button type="button" onClick={goPrevious} disabled={normalizedPage === 0}>← Trang trước</button><label className="page-status"><span className="visually-hidden">Đi đến trang</span><select value={spreadLead} onChange={(event) => goToIndex(Number(event.target.value))}>{navigableIndexes.map((index) => <option key={index} value={index}>{spreadLabel(index)} — {pages[index].title}</option>)}</select></label><button type="button" onClick={goNext} disabled={normalizedPage === lastIndex}>Trang sau →</button></nav>
     <p className="reader-context" aria-live="polite">{currentDefinition.title} · {physicalLabel} · {counter}</p>
     <p className="reader-hint">Kéo góc trang, dùng nút hoặc phím mũi tên, Page Up, Page Down, Home và End.</p>

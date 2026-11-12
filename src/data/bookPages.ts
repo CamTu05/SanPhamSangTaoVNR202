@@ -33,7 +33,7 @@ const specs: Spec[] = [
  ['c9-tay-nguyen','Chiến dịch Tây Nguyên 1975','Ngày 10/3/1975, đòn tiến công vào Buôn Ma Thuột làm rung chuyển thế phòng thủ Tây Nguyên. Quyết định rút quân sau đó dẫn tới hỗn loạn và tổn thất lớn, khiến kế hoạch chiến dịch ban đầu nhanh chóng phát triển thành thời cơ chiến lược trên toàn miền Nam.','c9'],
  ['c9-hue-danang','Từ Huế – Đà Nẵng đến Sài Gòn','Cuối tháng 3/1975, Huế và Đà Nẵng lần lượt nằm dưới quyền kiểm soát của lực lượng cách mạng. Sự tan rã nhanh của tuyến phòng thủ miền Trung thúc đẩy quyết định phát triển cuộc tiến công và chuẩn bị chiến dịch cuối cùng hướng vào Sài Gòn – Gia Định.','c9'],
  ['c9-hcm-campaign','Chiến dịch Hồ Chí Minh và ngày 30/4/1975','Từ 26 đến 30/4, các cánh quân tiến vào Sài Gòn – Gia Định. Trưa 30/4, chính quyền Việt Nam Cộng hòa đầu hàng, chiến tranh kết thúc. Thống nhất về mặt nhà nước là quá trình tiếp theo, với bầu cử Quốc hội chung và quyết định tên nước trong năm 1976.','c9'],
- ['ending-reflection','Nhìn lại 30 năm khắc sử','Ba mươi năm chiến tranh để lại độc lập, thống nhất nhưng cũng nhiều mất mát, di cư và ký ức khác nhau. Đọc lịch sử cần phân biệt kết quả quân sự, quyết định chính trị và hệ quả lâu dài; đồng thời luôn hỏi ai tạo tư liệu, vào lúc nào và chú thích có cùng nguồn với hình ảnh hay không.'],
+ ['ending-reflection','Nhìn lại 30 năm khắc sử','Từ mùa thu năm 1945 đến ngày 30/4/1975, Việt Nam trải qua ba thập kỷ chiến tranh với những bước ngoặt quyết định vận mệnh dân tộc. Đó là hành trình đấu tranh giành độc lập, bảo vệ chủ quyền và đi đến kết thúc chiến tranh, mở đường cho thống nhất đất nước.\n\nNhưng lịch sử không chỉ được viết bằng những chiến thắng. Đằng sau mỗi chiến dịch là những con người đã sống, chiến đấu, hy sinh và chịu đựng mất mát. Chiến tranh để lại những cuộc chia ly, những ký ức khó quên và cả những vết thương cần nhiều thế hệ để hàn gắn.'],
  ['back-cover','30 NĂM KHẮC SỬ','Việt Nam 1945–1975']
 ]
 
@@ -52,7 +52,7 @@ const mediaById: Record<string, string[]> = {
  'c3-campaigns-homefront':['arch-1953-highway','arch-1953-de-castries'],
  'c4-context':['arch-1954-valley','arch-1954-road'],
  'c4-phase-two':['arch-1954-trenches','arch-1954-dien-bien-flag'],
- 'c4-geneva':['arch-1954-geneva','s11-geneva-map'],
+ 'c4-geneva':['arch-1954-geneva'],
  'c5-two-regions':['arch-1954-refugees'],
  'c6-special-war':['arch-1962-hamlet'],
  'c6-events':['arch-1963-diem'],
@@ -63,7 +63,7 @@ const mediaById: Record<string, string[]> = {
  'c8-accord':['s17-paris-table','arch-1973-thachhan'],
  'c9-after-paris':['arch-1975-phuoclong-map'],
  'c9-hcm-campaign':['arch-1975-okinawa','arch-1976-map'],
- 'ending-reflection':['arch-1975-tank843','s20-memory-collage']
+ 'ending-reflection':['arch-1975-tank843']
 }
 
 const eventsById: Record<string, HistoricalEvent[]> = {
@@ -213,11 +213,6 @@ const cardsById: Record<string, InfoCard[]> = {
   card('hf2','Ngày 30/4','Dương Văn Minh tuyên bố đầu hàng, khép lại chính quyền Việt Nam Cộng hòa.'),
   card('hf3','Từ 1975 đến 1976','Chiến tranh kết thúc trước khi bầu cử Quốc hội chung và thống nhất nhà nước hoàn tất.')
  ],
- 'ending-reflection':[
-  card('q1','Bước ngoặt','1945, 1950, 1954, 1968, 1973 và 1975–1976 cho thấy thay đổi quân sự và chính trị không luôn diễn ra cùng lúc.'),
-  card('q2','Ký ức và hòa bình','Hòa bình không xóa mất mát; đọc lịch sử cần đặt các ký ức khác nhau cạnh nhau.'),
-  card('q3','Đọc nguồn','Cần kiểm tra tác giả, niên đại, nơi lưu trữ, chú thích, quyền sử dụng và phân biệt ảnh lưu trữ với minh họa.')
- ]
 }
 
 const chapterStarts = [
@@ -241,7 +236,8 @@ const pages: BookPageDefinition[] = specs.map(([id,title,body,chapterId], index)
  ...(index>0&&index<31?{spreadId:`S${String(Math.ceil(index/2)).padStart(2,'0')}`,side:index%2?'L' as const:'R' as const}:{}),
  mediaIds:mediaById[id],events:eventsById[id],cards:cardsById[id],
  editorialSections:id==='c1-challenges'?[{title:'Cứu đói và tài chính',body:'Chính quyền phát động tăng gia, tiết kiệm, cứu trợ và các hình thức đóng góp tự nguyện để vượt khó.'},{title:'Bình dân học vụ',body:'Các lớp học đưa chữ Quốc ngữ đến đông đảo người dân, mở rộng khả năng tham gia xã hội.'},{title:'Xây dựng thể chế',body:'Tổng tuyển cử 6/1/1946 và Quốc hội khóa I củng cố nền tảng chính trị, pháp lý.'}]:id==='c2-viet-bac'?[{title:'Việt Bắc 1947',body:'Cuộc tiến công của Pháp không đạt mục tiêu; cơ quan lãnh đạo và lực lượng kháng chiến được bảo toàn.'},{title:'1948–1949',body:'Căn cứ, sản xuất, hậu cần và lực lượng vũ trang tiếp tục được củng cố.'}]:undefined,
- tagline:id==='c4-phase-two'?'Thắng lợi Điện Biên Phủ làm phá sản điểm tựa của kế hoạch Navarre và tạo sức ép quyết định tại Hội nghị Genève.':id==='c9-hcm-campaign'?'Ngày 30/4/1975 kết thúc chiến tranh; quá trình thống nhất nhà nước hoàn tất trong năm 1976.':undefined,
+ highlight:id==='ending-reflection'?'Ba mươi năm khắc sử không chỉ nhắc chúng ta nhớ đất nước đã đi qua những gì, mà còn để hiểu vì sao hòa bình hôm nay đáng được trân trọng.':undefined,
+ tagline:id==='c4-phase-two'?'Thắng lợi Điện Biên Phủ làm phá sản điểm tựa của kế hoạch Navarre và tạo sức ép quyết định tại Hội nghị Genève.':id==='c9-hcm-campaign'?'Ngày 30/4/1975 kết thúc chiến tranh; quá trình thống nhất nhà nước hoàn tất trong năm 1976.':id==='ending-reflection'?'Hiểu lịch sử không phải để sống mãi trong quá khứ, mà để biết gìn giữ những giá trị được đánh đổi qua nhiều thế hệ.':undefined,
  ...(id==='opening-guide'?{actions:chapterStarts.map(([label,pageId])=>({label,pageId}))}:{}),
  ...(id==='c3-border-campaign'?{sources:approvedSources.filter(s=>s.id==='museum-border')}:{}),
  ...(id==='c3-campaigns-homefront'?{sources:approvedSources.filter(s=>s.id==='museum-navarre')}:{}),
@@ -270,7 +266,7 @@ const chapters = [
  ['c7','Bước ngoặt Mậu Thân','1968','part-2'],
  ['c8','Từ chiến trường đến bàn đàm phán','1969–1974','part-2'],
  ['c9','Mùa Xuân 1975','1975–1976','part-2']
-].map(([id,title,period,partId])=>({id,title,period,partId,partIds:id==='c4'?['part-1','part-2']:undefined,pageIds:pageIds(...chapterRanges[id])}))
+].map(([id,title,period,partId])=>({id,title,period,partId,pageIds:pageIds(...chapterRanges[id])}))
 
 export const bookDefinition: BookDefinition = {
  id:'30-nam-khac-su',title:'30 NĂM KHẮC SỬ',eyebrow:'SÁCH LỊCH SỬ TƯƠNG TÁC',period:'Việt Nam 1945–1975',pages,chapters,

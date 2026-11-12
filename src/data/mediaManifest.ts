@@ -34,7 +34,7 @@ const archival = (
 
 export const mediaManifest: MediaAsset[] = [
  { id:'cover-tank-846', pageIds:['front-cover'], displayPageId:'front-cover', kind:'image', description:'Ảnh xe tăng số hiệu 846 tiến vào Dinh Độc Lập ngày 30/4/1975.', caption:'Ảnh xe tăng số hiệu 846 tiến vào Dinh Độc Lập được nhà báo Trần Mai Hưởng chụp ngày 30/4/1975.', source:'Thông tin do người dùng cung cấp — chờ thống nhất cách trích nguồn', attribution:'Trần Mai Hưởng', license:'Chưa xác minh', permissionStatus:'pending', verificationStatus:'pending', localPath:'/media/cover-tank-846.jpg', lifecycleStatus:'active', recordType:'asset' },
- reusable('s11-geneva-map',['c4-geneva'],'c4-geneva','/media/s11-geneva-map.svg','Sơ đồ giới tuyến quân sự tạm thời, không phải biên giới quốc tế.','illustration',approvedSources[9].url),
+ { ...reusable('s11-geneva-map',[],'','/media/s11-geneva-map.svg','Sơ đồ giới tuyến quân sự tạm thời, không phải biên giới quốc tế.','illustration',approvedSources[9].url), displayPageId:undefined, lifecycleStatus:'legacy' },
  { ...reusable('s14-strategy-icons',[],'','/media/s14-strategy-icons.svg','Biểu tượng ba thành tố của chiến lược.'), displayPageId:undefined, lifecycleStatus:'legacy' },
  reusable('s17-paris-table',['c8-accord'],'c8-accord','/media/vietnam-peace-agreement-signing.jpg','William Rogers ký Hiệp định Paris, 27/1/1973.','image','https://commons.wikimedia.org/wiki/File:Vietnam_peace_agreement_signing.jpg'),
  { ...reusable('s18-spring-1975-map',[],'','/media/s18-spring-1975-map.svg','Sơ đồ trình tự mùa xuân 1975.'), displayPageId:undefined, lifecycleStatus:'legacy' },

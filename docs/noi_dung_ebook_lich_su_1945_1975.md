@@ -62,7 +62,7 @@
 |27|c9-tay-nguyen|Part II|c9|Chiến dịch Tây Nguyên 1975|timeline|
 |28|c9-hue-danang|Part II|c9|Từ Huế – Đà Nẵng đến Sài Gòn|timeline|
 |29|c9-hcm-campaign|Part II|c9|Chiến dịch Hồ Chí Minh và ngày 30/4/1975|timeline|
-|30|ending-reflection|Ending|—|Nhìn lại 30 năm khắc sử|cards|
+|30|ending-reflection|Ending|—|Nhìn lại 30 năm khắc sử|reference|
 |31|back-cover|Ending|—|30 NĂM KHẮC SỬ|back-cover|
 
 ## Bản thảo 32 trang
@@ -278,7 +278,7 @@
   - `g1` **Đình chiến**: Các văn kiện quy định ngừng bắn, tập kết và chuyển quân.
   - `g2` **Giới tuyến tạm thời**: Đường gần vĩ tuyến 17 là giới tuyến quân sự, không phải biên giới quốc gia.
   - `g3` **Hệ quả**: Hai vùng tập kết hình thành; tổng tuyển cử dự kiến năm 1956 không diễn ra.
-- **Media:** `arch-1954-geneva`, `s11-geneva-map`
+- **Media:** `arch-1954-geneva`
 
 ### 16. Đất nước sau Genève
 
@@ -483,13 +483,15 @@
 - **Index / ID:** 30 / `ending-reflection`
 - **Phần / chương:** Kết sách / —
 - **Ý chính / tiêu đề:** Nhìn lại 30 năm khắc sử
-- **Nội dung chính xác:** Ba mươi năm chiến tranh để lại độc lập, thống nhất nhưng cũng nhiều mất mát, di cư và ký ức khác nhau. Đọc lịch sử cần phân biệt kết quả quân sự, quyết định chính trị và hệ quả lâu dài; đồng thời luôn hỏi ai tạo tư liệu, vào lúc nào và chú thích có cùng nguồn với hình ảnh hay không.
-- **Layout:** cards
-- **Thẻ nội dung:**
-  - `q1` **Bước ngoặt**: 1945, 1950, 1954, 1968, 1973 và 1975–1976 cho thấy thay đổi quân sự và chính trị không luôn diễn ra cùng lúc.
-  - `q2` **Ký ức và hòa bình**: Hòa bình không xóa mất mát; đọc lịch sử cần đặt các ký ức khác nhau cạnh nhau.
-  - `q3` **Đọc nguồn**: Cần kiểm tra tác giả, niên đại, nơi lưu trữ, chú thích, quyền sử dụng và phân biệt ảnh lưu trữ với minh họa.
-- **Media:** `arch-1975-tank843`, `s20-memory-collage`
+- **Nội dung chính xác:** Từ mùa thu năm 1945 đến ngày 30/4/1975, Việt Nam trải qua ba thập kỷ chiến tranh với những bước ngoặt quyết định vận mệnh dân tộc. Đó là hành trình đấu tranh giành độc lập, bảo vệ chủ quyền và đi đến kết thúc chiến tranh, mở đường cho thống nhất đất nước.
+
+  Nhưng lịch sử không chỉ được viết bằng những chiến thắng. Đằng sau mỗi chiến dịch là những con người đã sống, chiến đấu, hy sinh và chịu đựng mất mát. Chiến tranh để lại những cuộc chia ly, những ký ức khó quên và cả những vết thương cần nhiều thế hệ để hàn gắn.
+- **Layout:** reference · kết sách tĩnh
+- **Highlight:** Ba mươi năm khắc sử không chỉ nhắc chúng ta nhớ đất nước đã đi qua những gì, mà còn để hiểu vì sao hòa bình hôm nay đáng được trân trọng.
+- **Tagline:** Hiểu lịch sử không phải để sống mãi trong quá khứ, mà để biết gìn giữ những giá trị được đánh đổi qua nhiều thế hệ.
+- **Thẻ nội dung:** —
+- **Tương tác:** —
+- **Media:** `arch-1975-tank843`
 
 ### 31. 30 NĂM KHẮC SỬ
 
